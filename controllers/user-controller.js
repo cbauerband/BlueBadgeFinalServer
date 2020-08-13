@@ -12,14 +12,15 @@ router.post('/signup', function(req, res) {
     })
     .then(
         function userSuccess(user) {
-            let token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*48});
+            let token = jwt.sign({id: user.id}, "i_am_secret", {expiresIn: 60*60*48});
             res.json({
                 username: user,
                 message: "User successfully created",
                 sessionToken: token
             })
+           
         }
-    )
+    ) .catch(err => res.send(err))
 });
 //LOGIN
 router.post('/login', function(req, res) {

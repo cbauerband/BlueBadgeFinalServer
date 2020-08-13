@@ -8,6 +8,7 @@ let validateSession = require('../middleware/validate-session');
 
 router.post('/create', validateSession, (req, res) => {
     const character = {
+    owner: req.user.id,
     name: req.body.character.name,
     campaign: req.body.character.campaign,
     race: req.body.character.race,

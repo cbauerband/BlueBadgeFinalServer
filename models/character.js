@@ -1,5 +1,8 @@
 module.exports = function(sequelize, DataTypes){
     return sequelize.define('character', {
+    owner: {
+      type: DataTypes.INTEGER,
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false
